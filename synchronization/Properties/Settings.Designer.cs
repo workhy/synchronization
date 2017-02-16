@@ -26,11 +26,21 @@ namespace synchronization.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=DB_YTX;Persist Security Info=True;User ID=sa;Passwo" +
-            "rd=520430")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=DB_BX;Persist Security Info=True;User ID=sa;Passwor" +
+            "d=520430")]
         public string DB_YTXConnectionString {
             get {
                 return ((string)(this["DB_YTXConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.;Initial Catalog=DB_BX;User ID=sa;Password=520430")]
+        public string DB_BXConnectionString {
+            get {
+                return ((string)(this["DB_BXConnectionString"]));
             }
         }
     }

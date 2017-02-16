@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_YTX" Class="dbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=DB_YTX;Persist Security Info=True;User ID=sa" SettingsObjectName="synchronization.Properties.Settings" SettingsPropertyName="DB_YTXConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_BX" Class="dbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Table Name="dbo.MF_POS" Member="MF_POS">
     <Type Name="MF_POS">
       <Column Name="OS_ID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -335,23 +334,6 @@
       <Column Name="UNCFM_REM" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="UNCFM_USR" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
       <Column Name="UNCFM_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="YG_JOBID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="YG_JOBNO" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YG_JOBNAME" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
-      <Column Name="YG_ADDRESS" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
-      <Column Name="YG_LINKMAN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YG_TEL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YG_AREA" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="YG_LINKTEL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YG_LINKADDRESS" Type="System.String" DbType="NVarChar(300)" CanBeNull="true" />
-      <Column Name="YG_DDLX" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YG_GTBHD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YG_GTBJC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YG_GTBYS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YG_HBB" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YG_TZBH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YG_TZZS" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="YG_YM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.PRDT" Member="PRDT">
@@ -547,34 +529,65 @@
       <Column Name="REM_UP_DD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="UPR_LEVEL6" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
       <Column Name="S_CODE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="VALID_ID" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.BILN" Member="BILN">
-    <Type Name="BILN">
-      <Column Name="BIL_ID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="BIL_NM" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="PAT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="DEL_ID" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
-      <Column Name="XG_ID" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
-      <Column Name="SEL_DD" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
-      <Column Name="SEL_ID" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="SEL_DEP" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="SEL_USR" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="SEL_ACC" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="SEL_OTH" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="BIL_ID1" Type="System.String" DbType="VarChar(17)" CanBeNull="true" />
-      <Column Name="SEL_NO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="SEL_CX" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="TYPE_DEP" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
-      <Column Name="LST_NO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+  <Table Name="dbo.PRDT1" Member="PRDT1">
+    <Type Name="PRDT1">
+      <Column Name="WH" Type="System.String" DbType="VarChar(12) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PRD_NO" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PRD_MARK" Type="System.String" DbType="VarChar(40) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="QTY_INT" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY1" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="AMT_CST" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_MAX" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_MIN" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_LRN" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_BRW" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_ON_WAY" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_ON_PRC" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_ON_RSV" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_ON_ODR" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="LST_OTD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LST_IND" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LST_SFD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UP_INT" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="CST_INT" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="CST_STD" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="CST_PO" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="CST_SAL" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="UP_STD" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="UP_SAL" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY1_LRN" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY1_BRW" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="UP_PO" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_SA" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_RK" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_ZG" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_CK" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_SQ" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="REM" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="CHQC_DD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="QTY_SW" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_WX" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_WS" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_WS_KC" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_QL" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_Q2" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_Q2_YL" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_Q3" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="CST_BX" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_SQR" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_SQC" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_LOCK" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_JH" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="SC_DD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LST_OTD_QC" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LST_IND_QC" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="UP_DD" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.BILN1" Member="BILN1">
-    <Type Name="BILN1">
-      <Column Name="BIL_ID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PAT" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="SQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QTY1_LOCK" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="QTY_T3" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.CUST" Member="CUST">
@@ -788,64 +801,44 @@
       <Column Name="BANK_NAME" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="S_CODE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="DJ_YE" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="CHK_FL" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.PRDT1" Member="PRDT1">
-    <Type Name="PRDT1">
-      <Column Name="WH" Type="System.String" DbType="VarChar(12) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PRD_NO" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PRD_MARK" Type="System.String" DbType="VarChar(40) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="QTY_INT" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY1" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="AMT_CST" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_MAX" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_MIN" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_LRN" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_BRW" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_ON_WAY" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_ON_PRC" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_ON_RSV" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_ON_ODR" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="LST_OTD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LST_IND" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LST_SFD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UP_INT" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="CST_INT" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="CST_STD" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="CST_PO" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="CST_SAL" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="UP_STD" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="UP_SAL" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY1_LRN" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY1_BRW" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="UP_PO" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_SA" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_RK" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_ZG" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_CK" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_SQ" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="REM" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
-      <Column Name="CHQC_DD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="QTY_SW" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_WX" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_WS" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_WS_KC" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_QL" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_Q2" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_Q2_YL" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_Q3" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="CST_BX" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_SQR" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_SQC" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_LOCK" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_JH" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="SC_DD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LST_OTD_QC" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LST_IND_QC" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+  <Table Name="dbo.BILN" Member="BILN">
+    <Type Name="BILN">
+      <Column Name="BIL_ID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BIL_NM" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="PAT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DEL_ID" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="XG_ID" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="SEL_DD" Type="System.String" DbType="VarChar(8)" CanBeNull="true" />
+      <Column Name="SEL_ID" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SEL_DEP" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SEL_USR" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SEL_ACC" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SEL_OTH" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="BIL_ID1" Type="System.String" DbType="VarChar(17)" CanBeNull="true" />
+      <Column Name="SEL_NO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="SEL_CX" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TYPE_DEP" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="LST_NO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="UP_DD" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
-      <Column Name="QTY1_LOCK" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
-      <Column Name="QTY_T3" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BILN1" Member="BILN1">
+    <Type Name="BILN1">
+      <Column Name="BIL_ID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PAT" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MF_POS_Z" Member="MF_POS_Z">
+    <Type Name="MF_POS_Z">
+      <Column Name="OS_ID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OS_NO" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="KPXX" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SCYF" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="ZK" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

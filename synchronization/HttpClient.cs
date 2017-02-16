@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 
-namespace synchronization
+namespace Synchronizer
 {
     public class HttpClient
     {

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using synchronization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace synchronization
+namespace Synchronizer
 {
     public class Utility
     {
@@ -244,7 +245,7 @@ namespace synchronization
             string biln_seldd = "YMDD";
             string biln_selno = "NNNN";
 
-            using (dbDataContext db = new dbDataContext())
+            using (dbDataContext db = new dbDataContext(HyTools.ConfigTools.GetConnectionString()))
             {
                 BILN objBiln = db.BILN.Where(it => it.BIL_ID == bil_id).FirstOrDefault();
                 if (objBiln != null)

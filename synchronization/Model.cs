@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace synchronization
+namespace Synchronizer
 {
 
     public class Model
@@ -18,6 +18,14 @@ namespace synchronization
         public string region { get; set; }
 
         public string address { get; set; }
+
+        public string mobile { get; set; }
+
+        public string invoice { get; set; }
+
+        public string scyf { get; set; }
+
+        public string zk { get; set; }
 
         public List<ModelItem> items { get; set; }
     }
