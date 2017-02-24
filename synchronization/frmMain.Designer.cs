@@ -72,7 +72,6 @@
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmMain";
             this.Text = "同步器";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
