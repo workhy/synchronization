@@ -29,8 +29,8 @@ namespace Synchronizer
                         CHK_DAYS = 30,
                         SEND_WH = "1",
                         EST_DD = new DateTime(1899, 12, 30),
-                        //CUS_NO = GetCus_No(db, it.cus_no),
-                        CUS_NO=GetCus_No(db,it.cus_name),
+                        CUS_NO = GetCus_No(db, it.cus_no),
+                        //CUS_NO=GetCus_No(db,it.cus_name),
                         CUR_ID = "",
                         EXC_RTO = 1,
                         CLS_ID = "F",
@@ -56,25 +56,9 @@ namespace Synchronizer
                     db.MF_POS.InsertOnSubmit(objMF_POS);
                     #endregion
 
-                    #region MF_POS_Z
-                    decimal _scyf = 0;
-                    decimal.TryParse(it.scyf, out _scyf);
-
-                    decimal _zk = 0;
-                    decimal.TryParse(it.zk, out _zk);
-                        
-                    MF_POS_Z objMF_POS_Z = new MF_POS_Z {
-                         OS_ID=objMF_POS.OS_ID,
-                         OS_NO=objMF_POS.OS_NO,
-                         KPXX=it.invoice,
-                         SCYF =_scyf,
-                         ZK =_zk
-                    };
-                    db.MF_POS_Z.InsertOnSubmit(objMF_POS_Z);
-                    #endregion
-
                     #region TF_POS
                     int itmindex = 1;
+                    decimal? totalamtn= 0;
                     foreach (ModelItem itm in it.items) {
                         PRDT objPRDT = GetPRDT(db, itm.prd_no);
                         if (objPRDT == null)
@@ -116,6 +100,7 @@ namespace Synchronizer
                             };
                             db.TF_POS.InsertOnSubmit(objTF_POS);
 
+                            totalamtn = totalamtn + objTF_POS.AMTN;
                             itmindex++;
 
                             #region PRDT1
@@ -130,6 +115,25 @@ namespace Synchronizer
                         }
 
                     }
+                    #endregion
+
+                    #region MF_POS_Z
+                    decimal _scyf = 0;
+                    decimal.TryParse(it.scyf, out _scyf);
+
+                    decimal _zk = 0;
+                    decimal.TryParse(it.zk, out _zk);
+                    _zk = (totalamtn.HasValue? Convert.ToDecimal(totalamtn):0) % _zk;
+
+                    MF_POS_Z objMF_POS_Z = new MF_POS_Z
+                    {
+                        OS_ID = objMF_POS.OS_ID,
+                        OS_NO = objMF_POS.OS_NO,
+                        KPXX = it.invoice,
+                        SCYF = _scyf,
+                        ZK = _zk
+                    };
+                    db.MF_POS_Z.InsertOnSubmit(objMF_POS_Z);
                     #endregion
 
                     try
