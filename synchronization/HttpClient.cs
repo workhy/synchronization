@@ -14,19 +14,36 @@ namespace Synchronizer
 {
     public class HttpClient
     {
-        private string url = string.Empty;
+        private string billurl = string.Empty;
+        private string custurl = string.Empty;
 
         public HttpClient() {
-            url = HyTools.ConfigTools.GetAppSetting("TargetWeb");
+            billurl = HyTools.ConfigTools.GetAppSetting("TargetWeb");
+            custurl = HyTools.ConfigTools.GetAppSetting("CustWeb");
         }
 
-        public string GetContent() {
-            var rep = HttpHelper.CreateGetHttpResponse(url, 500, "", null);
-            string content=  HttpHelper.GetResponseString(rep);
+        /// <summary>
+        /// 获得返回信息
+        /// </summary>
+        /// <param name="style">bill,cust</param>
+        /// <returns></returns>
+        public string GetContent(string style) {
+            HttpWebResponse rep = null;
+            string content = "";
+            switch (style) {
+                case "bill":
+                    rep = HttpHelper.CreateGetHttpResponse(billurl, 500, "", null);
+                    content= HttpHelper.GetResponseString(rep);
+                    break;
+                case "cust":
+                    rep = HttpHelper.CreateGetHttpResponse(custurl, 500, "", null);
+                    content = HttpHelper.GetResponseString(rep);
+                    break;
+            }
             return content;
         }
 
-        public List<Model> GetModels(string msg) {
+        public List<Model> GetBillModels(string msg) {
             List<Model> lst = null;
             if (!string.IsNullOrEmpty(msg))
             {
@@ -42,6 +59,27 @@ namespace Synchronizer
             }
             else {
                 lst = new List<Model>(); 
+            }
+            return lst;
+        }
+
+        public List<CustModel> GetCustModels(string msg) {
+            List<CustModel> lst = null;
+            if (!string.IsNullOrEmpty(msg))
+            {
+                try
+                {
+                    lst = JsonConvert.DeserializeObject<List<CustModel>>(msg);
+                }
+                catch (Exception ex)
+                {
+                    HyTools.LogTools.WriteLog("getmodels", ex.ToString());
+                    lst = new List<CustModel>();
+                }
+            }
+            else
+            {
+                lst = new List<CustModel>();
             }
             return lst;
         }

@@ -55,6 +55,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BillCreater.cs" />
+    <Compile Include="ConvertToPinYing.cs" />
+    <Compile Include="CustCreater.cs" />
     <Compile Include="db.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

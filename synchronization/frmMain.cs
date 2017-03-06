@@ -1,4 +1,5 @@
-﻿using System;
+﻿using synchronization;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,14 +58,30 @@ namespace Synchronizer
             try
             {
                 HttpClient client = new HttpClient();
-                string msg = client.GetContent();
-                HyTools.LogTools.WriteLog("json 数据:",msg);
-                List<Model> lst = client.GetModels(msg);
-                ReturnMsg ret = BillCreater.CreateBill(lst);
+                string msg = "";
+                ReturnMsg ret = null;
+
+                #region 同步客户信息
+                msg = client.GetContent("cust");
+                HyTools.LogTools.WriteLog("cust 数据:", msg);
+                var lst = client.GetCustModels(msg);
+                ret =CustCreater.CreateCust(lst);
                 if (!ret.flag)
                 {
                     HyTools.LogTools.WriteLog("timSynch_Tick", ret.info);
                 }
+                #endregion
+
+                #region 同步受订单
+                msg = client.GetContent("bill");
+                HyTools.LogTools.WriteLog("bill 数据:",msg);
+                var _lst = client.GetBillModels(msg);
+                ret = BillCreater.CreateBill(_lst);
+                if (!ret.flag)
+                {
+                    HyTools.LogTools.WriteLog("timSynch_Tick", ret.info);
+                }
+                #endregion
             }
             catch (Exception ex) {
                 HyTools.LogTools.WriteLog("timSynch_Tick", ex.ToString());
