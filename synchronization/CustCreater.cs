@@ -9,6 +9,8 @@ namespace synchronization
 {
     public class CustCreater
     {
+        //[{"cus_no":"客户的编码,现在用手机号","cus_name":"客户的名称","address":"客户的地址","cnt_man1":"联系人",
+        //"tel1":"联系人电话1","adr1":"发票地址","adr2":"公司地址","fp_name":"发票名称"},
         /// <summary>
         /// 处理客户信息
         /// </summary>
@@ -43,8 +45,9 @@ namespace synchronization
                             BOS_NM=item.cnt_man1,
                             CNT_MAN1=item.cnt_man1,
                             TEL1=item.tel1,
-                            ADR1=item.adr1,
-                            ADR2=item.adr2,
+                            ADR1=item.adr1,//发票地址
+                            ADR2=item.adr2,//公司地址
+                            FP_NAME=item.fp_name,//发票名称
                             STR_DD=new DateTime(dd.Year,dd.Month,dd.Day),
                             CRD_ID="1",
                             ID1_TAX="1",
@@ -85,6 +88,7 @@ namespace synchronization
                         objCUST.TEL1 = item.tel1;
                         objCUST.ADR1 = item.adr1;
                         objCUST.ADR2 = item.adr2;
+                        objCUST.FP_NAME = item.fp_name;
                         #endregion
                     }
                 }

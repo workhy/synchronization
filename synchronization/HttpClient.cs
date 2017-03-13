@@ -63,6 +63,11 @@ namespace Synchronizer
             return lst;
         }
 
+        /// <summary>
+        /// 把Josn数据转为列表数据
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
         public List<CustModel> GetCustModels(string msg) {
             List<CustModel> lst = null;
             if (!string.IsNullOrEmpty(msg))
