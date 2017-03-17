@@ -15,42 +15,52 @@ namespace Synchronizer
             List<string> lstsucess = new List<string>(); 
             using (dbDataContext db = new dbDataContext(HyTools.ConfigTools.GetConnectionString())) {
                 foreach (Model it in lst) {
-                    #region MF_POS
+            
                     DateTime dt = DateTime.Now;
-                    DateTime os_dd = new DateTime(dt.Year, dt.Month, dt.Day);
+                    DateTime cur_dd = new DateTime(dt.Year, dt.Month, dt.Day,dt.Hour,dt.Minute,dt.Second);
+                    DateTime est_dd = cur_dd.AddHours(48);
+
                     string usr = HyTools.ConfigTools.GetAppSetting("usr");
+                    string os_no = Utility.GetNewNoIn(db, "SO", "", dt, "MF_POS", "OS_NO");
+                    string td_no = Utility.GetNewNoIn(db, "TD", "", cur_dd, "TRAD_MTH", "TRAD_MTH");
+
+                    #region MF_POS
                     MF_POS objMF_POS = new MF_POS {
                         OS_ID = "SO",
-                        OS_NO = Utility.GetNewNoIn(db, "SO", "", dt, "MF_POS", "OS_NO"),
+                        OS_NO = os_no,
                         BAT_NO = "",
-                        OS_DD = os_dd,
+                        OS_DD =new DateTime(cur_dd.Year,cur_dd.Month,cur_dd.Day),
+                        TRAD_MTH=td_no,
                         PAY_MTH = "5",
                         PAY_DAYS = 1,
                         CHK_DAYS = 30,
+                        PAY_REM=it.trade_model,
                         SEND_WH = "1",
-                        EST_DD = new DateTime(1899, 12, 30),
+                        EST_DD = new DateTime(est_dd.Year,est_dd.Month,est_dd.Day),//预交日
                         CUS_NO = GetCus_No(db, it.cus_no),
                         //CUS_NO=GetCus_No(db,it.cus_name),
                         CUR_ID = "",
                         EXC_RTO = 1,
                         CLS_ID = "F",
                         HIS_PRICE = "T",
-                        TAX_ID = "2",
-                        PAY_DD = os_dd,
+                        ADR=it.sh_address,
+                        TAX_ID = "3",//应税外加
+                        PAY_DD = new DateTime(cur_dd.Year,cur_dd.Month,cur_dd.Day),
                         INT_DAYS = 30,
                         USR = usr,
                         CHK_MAN = usr,
                         PRT_SW = "N",
                         PRE_ID = "F",
-                        CLS_DATE = os_dd,
+                        CLS_DATE = new DateTime(cur_dd.Year,cur_dd.Month,cur_dd.Day),
+                        CUS_NO_POS=it.no,
                         HS_ID = "T",
                         BIL_TYPE = "",
                         ISOVERSH = "F",
-                        SYS_DATE = os_dd,
+                        SYS_DATE = cur_dd,
                         CUS_OS_NO=it.no,
                         REM = "客户名称:" + (string.IsNullOrEmpty(it.cus_name)?"":it.cus_name) 
-                            + ",电话:" + (string.IsNullOrEmpty(it.mobile)?"":it.mobile) 
-                            + ",地址:" + (string.IsNullOrEmpty(it.address)?"":it.address)
+                            + ",电话:" + (string.IsNullOrEmpty(it.sh_tel)?"":it.sh_tel) 
+                            + ",地址:" + (string.IsNullOrEmpty(it.sh_address)?"":it.sh_address)
                             + ",订单号:" +(string.IsNullOrEmpty(it.no)?"":it.no)
                     };
                     db.MF_POS.InsertOnSubmit(objMF_POS);
@@ -83,12 +93,14 @@ namespace Synchronizer
                                 WH =(string.IsNullOrEmpty( objPRDT.WH)?frmMain.wh:objPRDT.WH),
                                 UNIT="1",
                                 OS_DD=objMF_POS.OS_DD,
+                                CUS_OS_NO=it.no,
                                 QTY=itm.qty,
                                 UP=  itm.price,
-                                AMT= itm.qty * itm.price,
-                                AMTN=itm.qty * itm.price,
-                                TAX=0,
-                                //EST_DD=new DateTime(1899,12,30),
+                                AMT= itm.qty * itm.price,//金额
+                                AMTN=itm.qty * itm.price,//未税本位币
+                                TAX=itm.tax,//税额
+                                TAX_RTO=itm.tax_rto,//税率
+                                EST_DD=objMF_POS.EST_DD,//预交日
                                 EST_ITM=itmindex,
                                 CST_STD=0,
                                 QTY_PO=0,
@@ -117,23 +129,69 @@ namespace Synchronizer
                     }
                     #endregion
 
-                    #region MF_POS_Z
-                    decimal _scyf = 0;
-                    decimal.TryParse(it.scyf, out _scyf);
-
-                    decimal _zk = 0;
-                    decimal.TryParse(it.zk, out _zk);
-                    _zk = (totalamtn.HasValue? Convert.ToDecimal(totalamtn):0) % _zk;
-
-                    MF_POS_Z objMF_POS_Z = new MF_POS_Z
-                    {
+                    #region TF_POS_RCV 发票送货部分
+                    decimal _ysfy = 0;
+                    decimal.TryParse(it.ysfy, out _ysfy);
+                    var objTF_POS_RCV = new TF_POS_RCV {
                         OS_ID = objMF_POS.OS_ID,
                         OS_NO = objMF_POS.OS_NO,
-                        KPXX = it.invoice,
-                        SCYF = _scyf,
-                        ZK = _zk
+                        CON_MAN = it.sh_usr,//收货人
+                        FH_NO = "",
+                        CUS_NO_KD = "",
+                        ADR = it.sh_address,//收货地址
+                        ZIP = "",
+                        TEL_NO = "",
+                        CELL_NO = it.sh_tel,//收货人电话
+                        RCV_CHK = "T", //保存方式
+                        SEND_WH_KD = "",//发货地址代号
+                        INV_ID = (it.inv_style=="1"?"31":"32"),//发票类型(31普通发票，32增值税发票)
+                        INV_NR = it.inv_content,//发票内容
+                        INV_TT =  it.inv_topic,//发票抬头
+                        DW_NAME = it.inv_name,//发票单位名称
+                        NSR_CODE = it.inv_code,//纳税人识别号
+                        ZC_ADR = it.inv_address,
+                        ID_CODE = it.inv_bacc,//银行账号
+                        KH_BANK=it.inv_bank,//开户银行
+                        ZC_TEL="",//注册电话
+                        AMT_EXPR=_ysfy,//运输费用
+                        PAY_ASS="2",
+                        COVER_ASS="2"//,
+                        //SEND_MODEL="1"
                     };
-                    db.MF_POS_Z.InsertOnSubmit(objMF_POS_Z);
+                    db.TF_POS_RCV.InsertOnSubmit(objTF_POS_RCV);
+                    #endregion
+
+                    #region TRAD_MTH
+                    var objTRAD_MTH = new TRAD_MTH {
+                        TRAD_MTH1=td_no,
+                        BILID="SO",
+                        BIL_NO=objMF_POS.OS_NO,
+                        ETD=cur_dd,
+                        ETA=cur_dd,
+                        USR_DEF1= "Usr_Def1",
+                        USR_DEF2= "Usr_Def2",
+                        SHIP_DATE=cur_dd
+                    };
+                    db.TRAD_MTH.InsertOnSubmit(objTRAD_MTH);
+                    #endregion
+
+                    #region MF_POS_Z
+                    //decimal _scyf = 0;
+                    //decimal.TryParse(it.scyf, out _scyf);
+
+                    //decimal _zk = 0;
+                    //decimal.TryParse(it.zk, out _zk);
+                    //_zk = (totalamtn.HasValue? Convert.ToDecimal(totalamtn):0) % _zk;
+
+                    //MF_POS_Z objMF_POS_Z = new MF_POS_Z
+                    //{
+                    //    OS_ID = objMF_POS.OS_ID,
+                    //    OS_NO = objMF_POS.OS_NO,
+                    //    KPXX = it.invoice,
+                    //    SCYF = _scyf,
+                    //    ZK = _zk
+                    //};
+                    //db.MF_POS_Z.InsertOnSubmit(objMF_POS_Z);
                     #endregion
 
                     try

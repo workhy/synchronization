@@ -841,4 +841,108 @@
       <Column Name="ZK" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.TF_POS_RCV" Member="TF_POS_RCV">
+    <Type Name="TF_POS_RCV">
+      <Column Name="OS_ID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OS_NO" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CON_MAN" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="FH_NO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CUS_NO_KD" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="ADR" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ZIP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TEL_NO" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="CELL_NO" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="RCV_CHK" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="SEND_WH_KD" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="INV_ID" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="INV_NR" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="INV_TT" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="DW_NAME" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="NSR_CODE" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="ZC_ADR" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ID_CODE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="KH_BANK" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="ZC_TEL" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="RCV_WH_KD" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="COUN_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RCV_E_MAIL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RCV_FAX" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="EXPR_NUM" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TRAF_ID" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="AMT_EXPR" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="POST_DD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CNT_MAN" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="PAID_TYPE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PAY_ASS" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="REM" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="COVER_ASS" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="MSG_SW" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="MSG_SDD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MSG_MDD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PRT_SW" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="AREA_NO" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SHOP_NAME" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="COT_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PROV_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CITY_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PRT_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PRT_USR" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TRAD_MTH" Member="TRAD_MTH">
+    <Type Name="TRAD_MTH">
+      <Column Name="TRAD_MTH" Member="TRAD_MTH1" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BILID" Type="System.String" DbType="VarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BIL_NO" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ATTN" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="CCC_CODE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="SUBJECT" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PAYMENT" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="INSURANCE" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CONSIGNEE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="NOTIFY" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="BROKER" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="ETD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ETA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="VESSEL" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="FLIGHT" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="LOADING_PORT" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="DIS_PORT" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="MANU_PLACE" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="USR_DEF1" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="USR_CONTENT1" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="USR_DEF2" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="USR_CONTENT2" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ORI_FORM" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="P_AC" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="S_ID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CONS_NAME" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NOTI_NAME" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="LOAD_ID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DIS_ID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="BIL_ID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="BIL_NAME" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DEL_ID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="BROK_NAME" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SHIP_NAME" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PAY_ID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DEL_NAME" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="SHIP_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CANCEL_ID" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="CUS_COMM" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="CUS_INSP" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="CUS_FORW" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="CONT_TYPE" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="SHIP_VIA" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DEL_PLACE" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="NOTI_DD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CLOSE_DD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RTO_COMM" Type="System.Decimal" DbType="Decimal(22,8)" CanBeNull="true" />
+      <Column Name="INS_ID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DEL_WAY" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="PRICE_TERMS" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="REM_PT" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="REM_PAY" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
 </Database>
