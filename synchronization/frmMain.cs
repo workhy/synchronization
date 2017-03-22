@@ -39,20 +39,20 @@ namespace Synchronizer
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            //btnStart.Enabled = false;
-            //btnStart.Text = "数据同步中";
-            //timSynch.Enabled = true;
-            //timSynch.Interval = interval * 1000 * 60;
-            //timSynch.Start();
+            btnStart.Enabled = false;
+            btnStart.Text = "数据同步中";
+            timSynch.Enabled = true;
+            timSynch.Interval = interval * 1000 * 60;
+            timSynch.Start();
 
-            HttpClient client = new HttpClient();
-            string txt = System.IO.File.ReadAllText("d:\\log.txt");
-            var _lst = client.GetBillModels(txt);
-           ReturnMsg   ret = BillCreater.CreateBill(_lst);
-            if (!ret.flag)
-            {
-                HyTools.LogTools.WriteLog("timSynch_Tick", ret.info);
-            }
+            // HttpClient client = new HttpClient();
+            // string txt = System.IO.File.ReadAllText("d:\\log.txt");
+            // var _lst = client.GetBillModels(txt);
+            //ReturnMsg   ret = BillCreater.CreateBill(_lst);
+            // if (!ret.flag)
+            // {
+            //     HyTools.LogTools.WriteLog("timSynch_Tick", ret.info);
+            // }
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
