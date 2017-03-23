@@ -45,13 +45,18 @@ namespace Synchronizer
             timSynch.Interval = interval * 1000 * 60;
             timSynch.Start();
 
+            //HttpClient client = new HttpClient();
+            //string msg = "[{\"cus_no\":\"13588889999\",\"cus_name\":\"王先生1\",\"address\":\"云城东路10号\",\"cnt_man1\":\"王先生\",\"tel1\":\"13588889999\",\"adr1\":\"云城东路10号\",\"adr2\":\"万达集团广州分公司\",\"fp_name\":\"万达集团广州分公司\"},{\"cus_no\":\"18988833632\",\"cus_name\":\"郑文洪\",\"address\":\"天河区大观中路95号科汇园512\",\"cnt_man1\":\"郑文洪\",\"tel1\":\"18988833632\",\"adr1\":\"天河区大观中路95号科汇园512\",\"adr2\":\"广州市互信网络科技有限公司\",\"fp_name\":\"广州市互信网络科技有限公司\"},{\"cus_no\":\"13533215985\",\"cus_name\":\"章先生\",\"address\":\"田顶工业区\",\"cnt_man1\":\"章先生\",\"tel1\":\"13533215985\",\"adr1\":\"田顶工业区\",\"adr2\":\"广州佰信纸业有限公司\",\"fp_name\":\"广州佰信纸业有限公司\"},{\"cus_no\":\"15989152430\",\"cus_name\":\"海灯法师\",\"address\":\"dgdfhkjsddahfkjl\",\"cnt_man1\":\"海灯法师\",\"tel1\":\"15989152430\",\"adr1\":\"dgdfhkjsddahfkjl\",\"adr2\":\"火电发噶富士达\",\"fp_name\":\"火电发噶富士达\"},{\"cus_no\":\"1418749772\",\"cus_name\":\"佰信\",\"address\":\"\",\"cnt_man1\":\"佰信\",\"tel1\":\"1418749772\",\"adr1\":\"\",\"adr2\":\"\",\"fp_name\":\"\"}]";
+            //var lst = client.GetCustModels(msg);
+            //var ret = CustCreater.CreateCust(lst);
+
             // HttpClient client = new HttpClient();
-            // string txt = System.IO.File.ReadAllText("d:\\log.txt");
+            // string txt = System.IO.File.ReadAllText(\"d:\\log.txt\");
             // var _lst = client.GetBillModels(txt);
             //ReturnMsg   ret = BillCreater.CreateBill(_lst);
             // if (!ret.flag)
             // {
-            //     HyTools.LogTools.WriteLog("timSynch_Tick", ret.info);
+            //     HyTools.LogTools.WriteLog(\"timSynch_Tick", ret.info);
             // }
         }
 

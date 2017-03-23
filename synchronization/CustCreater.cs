@@ -19,7 +19,6 @@ namespace synchronization
         public static ReturnMsg CreateCust(List<CustModel> lst)
         {
             ReturnMsg ret = null;
-            CUST objtmp = null;
             var dd = DateTime.Now;
             using (dbDataContext db = new dbDataContext(HyTools.ConfigTools.GetConnectionString())) {
                 foreach (var item in lst) {
@@ -33,7 +32,7 @@ namespace synchronization
                     if (objCUST == null)
                     {
                         #region 新增
-                        objtmp = new CUST {
+                        objCUST = new CUST {
                             CUS_NO=item.cus_no,
                             NAME=cus_name,
                             SNM=cus_snm,
