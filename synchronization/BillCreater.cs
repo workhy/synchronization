@@ -76,12 +76,21 @@ namespace Synchronizer
                             ret = new ReturnMsg
                             {
                                 flag = false,
-                                info = itm.prd_no + "没有对应信息."
+                                info ="单据:" + it.no + "中商品:" + itm.prd_no + "没有对应信息."
                             };
                             HyTools.LogTools.WriteLog("CreateBill", itm.prd_no + "没有对应信息.");
                             return ret;
                         }
                         else {
+                            decimal qty = 0;
+                            decimal price = 0;
+                            decimal tax = 0;
+                            decimal tax_rto = 0;
+                            decimal.TryParse(itm.qty, out qty);
+                            decimal.TryParse(itm.price, out price);
+                            decimal.TryParse(itm.tax, out tax);
+                            decimal.TryParse(itm.tax_rto, out tax_rto); 
+                             
                             TF_POS objTF_POS = new TF_POS
                             {
                                 OS_ID = "SO",
@@ -94,12 +103,12 @@ namespace Synchronizer
                                 UNIT="1",
                                 OS_DD=objMF_POS.OS_DD,
                                 CUS_OS_NO=it.no,
-                                QTY=itm.qty,
-                                UP=  itm.price,
-                                AMT= itm.qty * itm.price,//金额
-                                AMTN=itm.qty * itm.price,//未税本位币
-                                TAX=itm.tax,//税额
-                                TAX_RTO=itm.tax_rto,//税率
+                                QTY=qty,
+                                UP=  price,
+                                AMT= qty * price,//金额
+                                AMTN=qty * price,//未税本位币
+                                TAX=tax,//税额
+                                TAX_RTO=tax_rto,//税率
                                 EST_DD=objMF_POS.EST_DD,//预交日
                                 EST_ITM=itmindex,
                                 CST_STD=0,
@@ -144,9 +153,9 @@ namespace Synchronizer
                         CELL_NO = it.sh_tel,//收货人电话
                         RCV_CHK = "T", //保存方式
                         SEND_WH_KD = "",//发货地址代号
-                        INV_ID = (it.inv_style=="1"?"31":"32"),//发票类型(31普通发票，32增值税发票)
-                        INV_NR = it.inv_content,//发票内容
-                        INV_TT =  it.inv_topic,//发票抬头
+                        INV_ID = (it.inv_style == "1" ? "31" : "32"),//发票类型(31普通发票，32增值税发票)
+                        //INV_NR = it.inv_content,//发票内容，长度只有4位，暂时取消
+                        INV_TT = it.inv_style,//"1",//  it.inv_topic,//发票抬头
                         DW_NAME = it.inv_name,//发票单位名称
                         NSR_CODE = it.inv_code,//纳税人识别号
                         ZC_ADR = it.inv_address,

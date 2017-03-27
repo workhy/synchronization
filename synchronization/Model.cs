@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 namespace Synchronizer
 {
     #region 订单
-    //[{"no":"2016111581689","cus_no":"5","cus_name":"xiaweiliang","rem":"","trade_model":"货到付款(现金)",
-    //    "sh_usr":"收货人","sh_address":"广东省广州市天河区华景新城1507","sh_tel":"1302121212","ysfy":"8.00",
-    //    "inv_flag":"T","inv_style":"1","inv_topic":"1"，"inv_content":"","inv_name":"inv_code","inv_address":"",
-    //    "inv_tel","inv_bank":"","inv_bacc":"","items":[{"prd_no":"1801450081","qty":1, "price":175.70,"amtn":175.70，
-    //    "tax_rto":"0.17", tax":0.5,"rem":""}, {"prd_no":"1801450081","qty":2, "price":30,"amtn":60,"tax_rto":"0.17","tax":1,"rem":""},]}]
+  //{"no":"2017032236205","cus_no":"AH551005101","cus_name":"张先生","rem":"","trade_model":"货到付款","sh_usr":"张先生",
+  //"sh_address":"南岸路","sh_tel":"13533215985","ysfy":"151","inv_flag":"T","inv_style":"1","inv_topic":"广州市佰信纸业有限公司",
+  //"inv_content":"办公用品","inv_name":"广州市佰信纸业有限公司","inv_code":"","inv_address":"南岸路","inv_tel":"13533215985",
+  //"inv_bank":"","inv_bacc":"","items":[{"prd_no":"61070A445010","qty":"3","price":"154.4400","amtn":"463.3200","tax_rto":"27.8","tax":".278","rem":""}]}
 
     public class Model
     {
@@ -79,15 +78,14 @@ namespace Synchronizer
         public string inv_bacc { get; set; }
         public List<ModelItem> items { get; set; }
     }
-    //"items":[{"prd_no":"1801450081","qty":1, "price":175.70,"amtn":175.70，
-    //    "tax_rto":"0.17", tax":0.5,"rem":""}, {"prd_no":"1801450081","qty":2, "price":30,"amtn":60,"tax_rto":"0.17","tax":1,"rem":""},]}
+//"items":[{"prd_no":"61070A445010","qty":"3","price":"154.4400","amtn":"463.3200","tax_rto":"27.8","tax":".278","rem":""}]}
     public class ModelItem {
         public string prd_no { get; set; }
-        public decimal qty { get; set; }
-        public decimal price { get; set; }
-        public decimal amtn { get; set; }
-        public decimal tax_rto { get; set; }
-        public decimal tax { get; set; }
+        public string qty { get; set; }
+        public string price { get; set; }
+        public string amtn { get; set; }
+        public string tax_rto { get; set; }
+        public string tax { get; set; }
         public string rem { get; set; }
     }
     #endregion

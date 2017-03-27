@@ -88,6 +88,7 @@ namespace Synchronizer
 
                 #region 同步受订单
                 msg = client.GetContent("bill");
+                msg=msg.Replace("<font color=\"#FF0000\">财付通</font>","财付通");
                 HyTools.LogTools.WriteLog("bill 数据:",msg);
                 var _lst = client.GetBillModels(msg);
                 ret = BillCreater.CreateBill(_lst);
